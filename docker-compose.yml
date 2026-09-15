@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: mdja-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mdja-network
+
+  backend-node:
+    build:
+      context: ./backend-node
+    container_name: mdja-backend-node
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      - PORT=4000
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongo:27017/mandat_jeunes_africains
+      - CORS_ORIGIN=http://localhost:3000
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend-node/src:/app/src
+    networks:
+      - mdja-network
+
+  service-python:
+    build:
+      context: ./service-python
+    container_name: mdja-service-python
+    restart: unless-stopped
+    depends_on:
+      - backend-node
+    environment:
+      - BACKEND_API_URL=http://backend-node:4000
+      - CORS_ORIGIN=http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./service-python:/app
+    networks:
+      - mdja-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: mdja-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend-node
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:4000
+      - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+    ports:
+      - "3000:3000"
+    networks:
+      - mdja-network
+
+networks:
+  mdja-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

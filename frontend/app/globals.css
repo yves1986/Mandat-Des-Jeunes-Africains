@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand-cream text-brand-brown-dark font-body antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+::selection {
+  @apply bg-brand-gold text-brand-brown-dark;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-6xl px-6;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply btn bg-brand-gold text-brand-brown-dark hover:bg-brand-gold-dark;
+}
+
+.btn-outline {
+  @apply btn border-2 border-white/70 text-white hover:bg-white hover:text-brand-brown-dark;
+}
+
+.btn-secondary {
+  @apply btn border-2 border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-brand-cream;
+}
+
+.pill-tag {
+  @apply inline-flex items-center rounded-full bg-brand-green/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-green;
+}
+
+.card {
+  @apply rounded-xl2 bg-white shadow-card ring-1 ring-black/5;
+}
+
+.section-eyebrow {
+  @apply mb-3 inline-block text-xs font-bold uppercase tracking-[0.2em] text-brand-red;
+}
