@@ -5,18 +5,27 @@ export const STATS = [
   { value: "40", label: "Antennes nationales actives" },
 ];
 
-export const PILLARS = [
+export const HERO_STATS = [
+  { value: "10K+", label: "Membres" },
+  { value: "50+", label: "Projets" },
+  { value: "25", label: "Pays" },
+];
+
+export const PILLARS: { icon: "education" | "plaidoyer" | "leadership"; title: string; description: string }[] = [
   {
+    icon: "education",
     title: "Éducation civique",
     description:
       "Former les jeunes à la citoyenneté active, aux institutions et aux mécanismes de gouvernance pour qu'ils exercent pleinement leur mandat.",
   },
   {
+    icon: "plaidoyer",
     title: "Plaidoyer politique",
     description:
       "Porter la voix de la jeunesse auprès des institutions nationales, régionales et de l'Union Africaine pour des politiques inclusives.",
   },
   {
+    icon: "leadership",
     title: "Leadership local",
     description:
       "Identifier, former et accompagner des ambassadeurs de terrain capables de mobiliser leurs communautés au quotidien.",
