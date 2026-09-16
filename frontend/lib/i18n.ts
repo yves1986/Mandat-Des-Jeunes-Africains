@@ -50,6 +50,27 @@ type Dictionary = {
     genericError: string;
     networkError: string;
   };
+  admin: {
+    loginTitle: string;
+    loginSubtitle: string;
+    password: string;
+    signIn: string;
+    signingIn: string;
+    invalidCredentials: string;
+    dashboardTitle: string;
+    logout: string;
+    totalContacts: string;
+    totalEngagements: string;
+    totalActions: string;
+    growthTitle: string;
+    byCountryTitle: string;
+    byTypeTitle: string;
+    recentContacts: string;
+    recentEngagements: string;
+    exportContacts: string;
+    exportEngagements: string;
+    noData: string;
+  };
 };
 
 export const dictionaries: Record<Locale, Dictionary> = {
@@ -100,6 +121,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
       genericError: "Une erreur est survenue. Merci de réessayer.",
       networkError: "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
     },
+    admin: {
+      loginTitle: "Espace administrateur",
+      loginSubtitle: "Connectez-vous pour accéder au tableau de bord.",
+      password: "Mot de passe",
+      signIn: "Se connecter",
+      signingIn: "Connexion...",
+      invalidCredentials: "Identifiants invalides.",
+      dashboardTitle: "Tableau de bord",
+      logout: "Se déconnecter",
+      totalContacts: "Messages reçus",
+      totalEngagements: "Engagements",
+      totalActions: "Actions publiées",
+      growthTitle: "Croissance des engagements (12 derniers mois)",
+      byCountryTitle: "Engagements par pays",
+      byTypeTitle: "Engagements par type",
+      recentContacts: "Derniers messages",
+      recentEngagements: "Derniers engagements",
+      exportContacts: "Exporter les contacts (CSV)",
+      exportEngagements: "Exporter les engagements (CSV)",
+      noData: "Pas encore de données.",
+    },
   },
   en: {
     nav: {
@@ -145,6 +187,27 @@ export const dictionaries: Record<Locale, Dictionary> = {
       newsletterSuccess: "Thank you! Check your inbox to confirm your subscription.",
       genericError: "Something went wrong. Please try again.",
       networkError: "Could not reach the server. Check your connection and try again.",
+    },
+    admin: {
+      loginTitle: "Admin area",
+      loginSubtitle: "Sign in to access the dashboard.",
+      password: "Password",
+      signIn: "Sign in",
+      signingIn: "Signing in...",
+      invalidCredentials: "Invalid credentials.",
+      dashboardTitle: "Dashboard",
+      logout: "Log out",
+      totalContacts: "Messages received",
+      totalEngagements: "Engagements",
+      totalActions: "Published actions",
+      growthTitle: "Engagement growth (last 12 months)",
+      byCountryTitle: "Engagements by country",
+      byTypeTitle: "Engagements by type",
+      recentContacts: "Latest messages",
+      recentEngagements: "Latest engagements",
+      exportContacts: "Export contacts (CSV)",
+      exportEngagements: "Export engagements (CSV)",
+      noData: "No data yet.",
     },
   },
 };

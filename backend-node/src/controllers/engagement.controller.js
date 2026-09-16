@@ -1,4 +1,5 @@
 const Engagement = require("../models/Engagement");
+const { toCsv } = require("../utils/csv");
 
 async function createEngagement(req, res, next) {
   try {
@@ -29,4 +30,25 @@ async function listEngagements(req, res, next) {
   }
 }
 
-module.exports = { createEngagement, listEngagements };
+async function exportEngagementsCsv(req, res, next) {
+  try {
+    const engagements = await Engagement.find().sort({ createdAt: -1 });
+    const csv = toCsv(engagements, [
+      { label: "Date", value: (e) => e.createdAt.toISOString() },
+      { label: "Nom complet", value: (e) => e.fullName },
+      { label: "Email", value: (e) => e.email },
+      { label: "Pays", value: (e) => e.country },
+      { label: "Type d'engagement", value: (e) => e.engagementType },
+      { label: "Motivation", value: (e) => e.motivation },
+      { label: "Statut", value: (e) => e.status },
+    ]);
+
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", 'attachment; filename="engagements.csv"');
+    res.send(csv);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { createEngagement, listEngagements, exportEngagementsCsv };

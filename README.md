@@ -59,12 +59,19 @@ mandat-jeunes-africains/
 ## Fonctionnalités
 
 - **Site vitrine multi-pages** (Accueil, Le Mouvement, Actions, Médias,
-  S'engager, Contact) entièrement responsive, en français.
+  S'engager, Contact) entièrement responsive.
+- **Multilingue FR/EN** : routes `/fr/...` et `/en/...`, détection
+  automatique de la langue (cookie puis `Accept-Language`), sélecteur de
+  langue dans le header.
 - **Formulaire de contact** et **formulaire d'engagement** connectés en
   temps réel à l'API Express (`POST /api/contact`, `POST /api/engagement`).
 - **Inscription newsletter** (`POST /api/contact/newsletter`).
 - **Catalogue d'actions** exposé par l'API (`GET /api/actions`) et un script
   de seed pour peupler MongoDB.
+- **Espace admin protégé** (`/[locale]/admin/login`,
+  `/[locale]/admin/dashboard`) : authentification JWT, tableau de bord avec
+  KPIs de croissance (graphiques d'évolution des engagements, répartition
+  par pays/type), listes des derniers messages/engagements, export CSV.
 - **Microservice Python** pour l'analyse des membres
   (`GET /analyze/members/live`) et la génération de rapports CSV
   (`GET /reports/members`), consommant l'API Node.js.
@@ -91,6 +98,15 @@ Pour peupler la base avec des actions de démonstration :
 ```bash
 docker compose exec backend-node npm run seed
 ```
+
+Pour créer le premier compte administrateur (identifiants définis par
+`ADMIN_EMAIL` / `ADMIN_PASSWORD` dans `backend-node/.env`) :
+
+```bash
+docker compose exec backend-node npm run seed:admin
+```
+
+Le tableau de bord est ensuite accessible sur `http://localhost:3000/fr/admin/login`.
 
 ## Démarrage local (sans Docker)
 

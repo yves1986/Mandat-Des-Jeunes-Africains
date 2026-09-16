@@ -1,10 +1,12 @@
 const express = require("express");
 const { body } = require("express-validator");
 const validate = require("../middleware/validate");
+const authenticate = require("../middleware/authenticate");
 const {
   createContactMessage,
   listContactMessages,
   subscribeNewsletter,
+  exportContactsCsv,
 } = require("../controllers/contact.controller");
 
 const router = express.Router();
@@ -21,7 +23,8 @@ router.post(
   createContactMessage,
 );
 
-router.get("/", listContactMessages);
+router.get("/export", authenticate, exportContactsCsv);
+router.get("/", authenticate, listContactMessages);
 
 router.post(
   "/newsletter",

@@ -1,7 +1,12 @@
 const express = require("express");
 const { body } = require("express-validator");
 const validate = require("../middleware/validate");
-const { createEngagement, listEngagements } = require("../controllers/engagement.controller");
+const authenticate = require("../middleware/authenticate");
+const {
+  createEngagement,
+  listEngagements,
+  exportEngagementsCsv,
+} = require("../controllers/engagement.controller");
 
 const router = express.Router();
 
@@ -25,6 +30,7 @@ router.post(
   createEngagement,
 );
 
-router.get("/", listEngagements);
+router.get("/export", authenticate, exportEngagementsCsv);
+router.get("/", authenticate, listEngagements);
 
 module.exports = router;
