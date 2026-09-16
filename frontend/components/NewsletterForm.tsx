@@ -2,8 +2,10 @@
 
 import { useState, type FormEvent } from "react";
 import { submitNewsletter } from "@/lib/api";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function NewsletterForm({ compact = false }: { compact?: boolean }) {
+export default function NewsletterForm({ locale, compact = false }: { locale: Locale; compact?: boolean }) {
+  const dict = getDictionary(locale);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -14,11 +16,11 @@ export default function NewsletterForm({ compact = false }: { compact?: boolean 
     const result = await submitNewsletter({ email });
     if (result.ok) {
       setStatus("success");
-      setMessage("Merci ! Vérifiez votre boîte mail pour confirmer votre inscription.");
+      setMessage(dict.forms.newsletterSuccess);
       setEmail("");
     } else {
       setStatus("error");
-      setMessage(result.error ?? "Une erreur est survenue.");
+      setMessage(result.error ?? dict.forms.genericError);
     }
   }
 
@@ -30,11 +32,11 @@ export default function NewsletterForm({ compact = false }: { compact?: boolean 
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Votre adresse e-mail"
+          placeholder={dict.forms.emailPlaceholder}
           className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-inherit placeholder:text-current placeholder:opacity-50 focus:border-brand-gold focus:outline-none"
         />
         <button type="submit" disabled={status === "loading"} className="btn-primary shrink-0">
-          {status === "loading" ? "Envoi..." : "S'inscrire"}
+          {status === "loading" ? dict.forms.sending : dict.forms.subscribe}
         </button>
       </div>
       {message && (

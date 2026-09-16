@@ -2,10 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { submitContactMessage } from "@/lib/api";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 const initialForm = { fullName: "", email: "", subject: "", message: "" };
 
-export default function ContactForm() {
+export default function ContactForm({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [feedback, setFeedback] = useState("");
@@ -16,11 +18,11 @@ export default function ContactForm() {
     const result = await submitContactMessage(form);
     if (result.ok) {
       setStatus("success");
-      setFeedback("Votre message a bien été envoyé. Notre équipe vous répondra sous 48h.");
+      setFeedback(dict.forms.contactSuccess);
       setForm(initialForm);
     } else {
       setStatus("error");
-      setFeedback(result.error ?? "Une erreur est survenue. Merci de réessayer.");
+      setFeedback(result.error ?? dict.forms.genericError);
     }
   }
 
@@ -29,7 +31,7 @@ export default function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Nom complet
+            {dict.forms.fullName}
           </label>
           <input
             required
@@ -41,7 +43,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Adresse e-mail
+            {dict.forms.email}
           </label>
           <input
             type="email"
@@ -55,19 +57,20 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">Sujet</label>
+        <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
+          {dict.forms.subject}
+        </label>
         <input
           required
           value={form.subject}
           onChange={(e) => setForm({ ...form, subject: e.target.value })}
           className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
-          placeholder="Objet de votre message"
         />
       </div>
 
       <div>
         <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-          Message
+          {dict.forms.message}
         </label>
         <textarea
           required
@@ -75,12 +78,11 @@ export default function ContactForm() {
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
-          placeholder="Votre message..."
         />
       </div>
 
       <button type="submit" disabled={status === "loading"} className="btn-primary w-full sm:w-auto">
-        {status === "loading" ? "Envoi en cours..." : "Envoyer le message"}
+        {status === "loading" ? dict.forms.sending : dict.forms.send}
       </button>
 
       {feedback && (

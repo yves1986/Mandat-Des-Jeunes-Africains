@@ -1,14 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import NewsletterForm from "./NewsletterForm";
-
-const SITE_LINKS = [
-  { href: "/mouvement", label: "Le Mouvement" },
-  { href: "/actions", label: "Nos Actions" },
-  { href: "/medias", label: "Médias" },
-  { href: "/sengager", label: "S'engager" },
-  { href: "/contact", label: "Contact" },
-];
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 const SOCIALS = [
   { label: "Facebook", href: "https://facebook.com" },
@@ -18,16 +11,23 @@ const SOCIALS = [
   { label: "YouTube", href: "https://youtube.com" },
 ];
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+
+  const siteLinks = [
+    { href: `/${locale}/mouvement`, label: dict.nav.movement },
+    { href: `/${locale}/actions`, label: dict.nav.actions },
+    { href: `/${locale}/medias`, label: dict.nav.media },
+    { href: `/${locale}/sengager`, label: dict.nav.getInvolved },
+    { href: `/${locale}/contact`, label: dict.nav.contact },
+  ];
+
   return (
     <footer className="bg-brand-brown-dark text-brand-cream">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
           <Logo theme="light" />
-          <p className="mt-4 text-sm leading-relaxed text-brand-cream/70">
-            Un mouvement panafricain qui donne à la jeunesse les moyens de porter,
-            défendre et incarner le mandat du développement du continent.
-          </p>
+          <p className="mt-4 text-sm leading-relaxed text-brand-cream/70">{dict.footer.tagline}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {SOCIALS.map((s) => (
               <a
@@ -45,10 +45,10 @@ export default function Footer() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-widest text-brand-gold">
-            Navigation
+            {dict.footer.navigation}
           </h3>
           <ul className="mt-4 space-y-3">
-            {SITE_LINKS.map((link) => (
+            {siteLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="text-sm text-brand-cream/80 hover:text-white">
                   {link.label}
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-widest text-brand-gold">
-            Contact
+            {dict.footer.contact}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-brand-cream/80">
             <li>Dakar, Sénégal — Siège panafricain</li>
@@ -79,19 +79,17 @@ export default function Footer() {
 
         <div>
           <h3 className="text-sm font-bold uppercase tracking-widest text-brand-gold">
-            Restez informés
+            {dict.footer.stayInformed}
           </h3>
-          <p className="mt-4 text-sm text-brand-cream/70">
-            Recevez nos actualités, campagnes et opportunités d'engagement.
-          </p>
-          <NewsletterForm compact />
+          <p className="mt-4 text-sm text-brand-cream/70">{dict.footer.stayInformedText}</p>
+          <NewsletterForm locale={locale} compact />
         </div>
       </div>
 
       <div className="border-t border-brand-cream/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-brand-cream/50 md:flex-row">
-          <p>© {new Date().getFullYear()} Mandat des Jeunes Africains. Tous droits réservés.</p>
-          <p>Le mandat appartient à la jeunesse africaine.</p>
+          <p>© {new Date().getFullYear()} Mandat des Jeunes Africains. {dict.footer.rights}</p>
+          <p>{dict.footer.slogan}</p>
         </div>
       </div>
     </footer>

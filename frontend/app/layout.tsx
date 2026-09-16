@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,22 +22,6 @@ export const metadata: Metadata = {
     default: "Mandat des Jeunes Africains",
     template: "%s | Mandat des Jeunes Africains",
   },
-  description:
-    "Mandat des Jeunes Africains est un mouvement panafricain qui donne à la jeunesse les moyens de porter, défendre et incarner le mandat du développement du continent.",
-  keywords: [
-    "Mandat des Jeunes Africains",
-    "jeunesse africaine",
-    "panafricanisme",
-    "leadership jeunesse",
-    "mouvement citoyen Afrique",
-  ],
-  openGraph: {
-    title: "Mandat des Jeunes Africains",
-    description:
-      "Un mouvement panafricain porté par et pour la jeunesse : plaidoyer, formation civique et mobilisation citoyenne.",
-    locale: "fr_FR",
-    type: "website",
-  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -53,11 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="flex min-h-screen flex-col">{children}</body>
     </html>
   );
 }

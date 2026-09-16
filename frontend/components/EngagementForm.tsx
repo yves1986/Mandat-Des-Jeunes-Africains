@@ -2,17 +2,21 @@
 
 import { useState, type FormEvent } from "react";
 import { submitEngagement } from "@/lib/api";
-import { ENGAGEMENT_WAYS } from "@/lib/data";
+import { getContent, ENGAGEMENT_API_VALUE, type EngagementWayId } from "@/lib/data";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-const initialForm = {
-  fullName: "",
-  email: "",
-  country: "",
-  engagementType: ENGAGEMENT_WAYS[0].title,
-  motivation: "",
-};
+export default function EngagementForm({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  const engagementWays = getContent(locale).engagementWays;
 
-export default function EngagementForm() {
+  const initialForm = {
+    fullName: "",
+    email: "",
+    country: "",
+    engagementType: engagementWays[0].id as EngagementWayId,
+    motivation: "",
+  };
+
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [feedback, setFeedback] = useState("");
@@ -20,16 +24,17 @@ export default function EngagementForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setStatus("loading");
-    const result = await submitEngagement(form);
+    const result = await submitEngagement({
+      ...form,
+      engagementType: ENGAGEMENT_API_VALUE[form.engagementType],
+    });
     if (result.ok) {
       setStatus("success");
-      setFeedback(
-        "Merci pour votre engagement ! Un membre de notre équipe vous contactera très prochainement.",
-      );
+      setFeedback(dict.forms.engagementSuccess);
       setForm(initialForm);
     } else {
       setStatus("error");
-      setFeedback(result.error ?? "Une erreur est survenue. Merci de réessayer.");
+      setFeedback(result.error ?? dict.forms.genericError);
     }
   }
 
@@ -38,7 +43,7 @@ export default function EngagementForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Nom complet
+            {dict.forms.fullName}
           </label>
           <input
             required
@@ -50,7 +55,7 @@ export default function EngagementForm() {
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Adresse e-mail
+            {dict.forms.email}
           </label>
           <input
             type="email"
@@ -66,7 +71,7 @@ export default function EngagementForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Pays
+            {dict.forms.country}
           </label>
           <input
             required
@@ -78,15 +83,15 @@ export default function EngagementForm() {
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-            Je souhaite
+            {dict.forms.wantTo}
           </label>
           <select
             value={form.engagementType}
-            onChange={(e) => setForm({ ...form, engagementType: e.target.value })}
+            onChange={(e) => setForm({ ...form, engagementType: e.target.value as EngagementWayId })}
             className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
           >
-            {ENGAGEMENT_WAYS.map((way) => (
-              <option key={way.title} value={way.title}>
+            {engagementWays.map((way) => (
+              <option key={way.id} value={way.id}>
                 {way.title}
               </option>
             ))}
@@ -96,19 +101,19 @@ export default function EngagementForm() {
 
       <div>
         <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
-          Votre motivation (optionnel)
+          {dict.forms.motivation}
         </label>
         <textarea
           rows={4}
           value={form.motivation}
           onChange={(e) => setForm({ ...form, motivation: e.target.value })}
           className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
-          placeholder="Dites-nous pourquoi vous souhaitez rejoindre le mouvement..."
+          placeholder={dict.forms.motivationPlaceholder}
         />
       </div>
 
       <button type="submit" disabled={status === "loading"} className="btn-primary w-full sm:w-auto">
-        {status === "loading" ? "Envoi en cours..." : "Envoyer ma candidature"}
+        {status === "loading" ? dict.forms.sending : dict.forms.sendApplication}
       </button>
 
       {feedback && (

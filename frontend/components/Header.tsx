@@ -4,30 +4,34 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
+import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
-const NAV_LINKS = [
-  { href: "/", label: "Accueil" },
-  { href: "/mouvement", label: "Le Mouvement" },
-  { href: "/actions", label: "Actions" },
-  { href: "/medias", label: "Médias" },
-  { href: "/sengager", label: "S'engager" },
-  { href: "/contact", label: "Contact" },
-];
-
-export default function Header() {
+export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const dict = getDictionary(locale);
+
+  const withoutLocale = pathname.replace(new RegExp(`^/(${locales.join("|")})`), "") || "/";
+
+  const navLinks = [
+    { href: `/${locale}`, match: `/${locale}`, label: dict.nav.home },
+    { href: `/${locale}/mouvement`, match: `/${locale}/mouvement`, label: dict.nav.movement },
+    { href: `/${locale}/actions`, match: `/${locale}/actions`, label: dict.nav.actions },
+    { href: `/${locale}/medias`, match: `/${locale}/medias`, label: dict.nav.media },
+    { href: `/${locale}/sengager`, match: `/${locale}/sengager`, label: dict.nav.getInvolved },
+    { href: `/${locale}/contact`, match: `/${locale}/contact`, label: dict.nav.contact },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-brown/10 bg-brand-cream/90 backdrop-blur">
       <div className="container-page flex h-20 items-center justify-between">
-        <Link href="/" onClick={() => setOpen(false)} aria-label="Mandat des Jeunes Africains — Accueil">
+        <Link href={`/${locale}`} onClick={() => setOpen(false)} aria-label="Mandat des Jeunes Africains — Accueil">
           <Logo />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => {
-            const active = pathname === link.href;
+          {navLinks.map((link) => {
+            const active = pathname === link.match;
             return (
               <Link
                 key={link.href}
@@ -42,9 +46,22 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
-          <Link href="/sengager" className="btn-secondary">
-            Rejoindre le mouvement
+        <div className="hidden items-center gap-4 lg:flex">
+          <div className="flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-brand-brown-dark/60">
+            {locales.map((l, i) => (
+              <span key={l} className="flex items-center gap-1">
+                {i > 0 && <span className="text-brand-brown-dark/30">/</span>}
+                <Link
+                  href={`/${l}${withoutLocale === "/" ? "" : withoutLocale}`}
+                  className={l === locale ? "text-brand-red" : "hover:text-brand-green"}
+                >
+                  {l.toUpperCase()}
+                </Link>
+              </span>
+            ))}
+          </div>
+          <Link href={`/${locale}/sengager`} className="btn-secondary">
+            {dict.nav.join}
           </Link>
         </div>
 
@@ -77,26 +94,36 @@ export default function Header() {
       {open && (
         <div className="border-t border-brand-brown/10 bg-brand-cream lg:hidden">
           <nav className="container-page flex flex-col gap-1 py-4">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-lg px-3 py-2.5 text-sm font-semibold ${
-                  pathname === link.href
-                    ? "bg-brand-green/10 text-brand-red"
-                    : "text-brand-brown-dark/80"
+                  pathname === link.match ? "bg-brand-green/10 text-brand-red" : "text-brand-brown-dark/80"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+            <div className="mt-1 flex gap-3 px-3 text-xs font-bold uppercase tracking-wide text-brand-brown-dark/60">
+              {locales.map((l) => (
+                <Link
+                  key={l}
+                  href={`/${l}${withoutLocale === "/" ? "" : withoutLocale}`}
+                  onClick={() => setOpen(false)}
+                  className={l === locale ? "text-brand-red" : ""}
+                >
+                  {l.toUpperCase()}
+                </Link>
+              ))}
+            </div>
             <Link
-              href="/sengager"
+              href={`/${locale}/sengager`}
               onClick={() => setOpen(false)}
               className="btn-secondary mt-2 justify-center"
             >
-              Rejoindre le mouvement
+              {dict.nav.join}
             </Link>
           </nav>
         </div>
