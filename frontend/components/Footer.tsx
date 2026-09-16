@@ -89,6 +89,20 @@ export default function Footer({ locale }: { locale: Locale }) {
       <div className="border-t border-brand-cream/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-brand-cream/50 md:flex-row">
           <p>© {new Date().getFullYear()} Mandat des Jeunes Africains. {dict.footer.rights}</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <Link href={`/${locale}/mentions-legales`} className="hover:text-white">
+              {dict.legal.legalNotice}
+            </Link>
+            <Link href={`/${locale}/cgu`} className="hover:text-white">
+              {dict.legal.termsOfUse}
+            </Link>
+            <Link href={`/${locale}/cgv`} className="hover:text-white">
+              {dict.legal.termsOfSale}
+            </Link>
+            <Link href={`/${locale}/politique-confidentialite`} className="hover:text-white">
+              {dict.legal.privacyPolicy}
+            </Link>
+          </div>
           <p>{dict.footer.slogan}</p>
         </div>
       </div>

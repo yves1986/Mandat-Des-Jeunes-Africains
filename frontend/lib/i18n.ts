@@ -71,6 +71,18 @@ type Dictionary = {
     exportEngagements: string;
     noData: string;
   };
+  legal: {
+    legalNotice: string;
+    termsOfUse: string;
+    termsOfSale: string;
+    privacyPolicy: string;
+  };
+  cookies: {
+    message: string;
+    accept: string;
+    decline: string;
+    learnMore: string;
+  };
 };
 
 export const dictionaries: Record<Locale, Dictionary> = {
@@ -142,6 +154,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       exportEngagements: "Exporter les engagements (CSV)",
       noData: "Pas encore de données.",
     },
+    legal: {
+      legalNotice: "Mentions légales",
+      termsOfUse: "CGU",
+      termsOfSale: "CGV",
+      privacyPolicy: "Politique de confidentialité",
+    },
+    cookies: {
+      message:
+        "Nous utilisons des cookies pour améliorer votre expérience et mesurer l'audience du site.",
+      accept: "Accepter",
+      decline: "Refuser",
+      learnMore: "En savoir plus",
+    },
   },
   en: {
     nav: {
@@ -208,6 +233,18 @@ export const dictionaries: Record<Locale, Dictionary> = {
       exportContacts: "Export contacts (CSV)",
       exportEngagements: "Export engagements (CSV)",
       noData: "No data yet.",
+    },
+    legal: {
+      legalNotice: "Legal notice",
+      termsOfUse: "Terms of use",
+      termsOfSale: "Terms of sale",
+      privacyPolicy: "Privacy policy",
+    },
+    cookies: {
+      message: "We use cookies to improve your experience and measure site traffic.",
+      accept: "Accept",
+      decline: "Decline",
+      learnMore: "Learn more",
     },
   },
 };
