@@ -22,6 +22,10 @@ const TEXT: Record<Locale, {
   govText: string;
   charterTitle: string;
   charterText: string;
+  founderEyebrow: string;
+  founderTitle: string;
+  founderQuote: string;
+  founderRole: string;
 }> = {
   fr: {
     metaTitle: "Le Mouvement",
@@ -47,6 +51,11 @@ const TEXT: Record<Locale, {
     charterTitle: "La Charte du Mandat",
     charterText:
       "Texte fondateur du mouvement, la Charte du Mandat définit les principes, engagements et mécanismes de redevabilité qui unissent tous les membres, quel que soit leur pays d'origine. Elle est disponible en téléchargement dans notre espace Médias.",
+    founderEyebrow: "Mot du fondateur",
+    founderTitle: "Une conviction à l'origine du mouvement",
+    founderQuote:
+      "« Nous avons créé ce mouvement parce que l'avenir de l'Afrique ne peut plus se décider sans sa jeunesse. Chaque jeune qui rejoint le Mandat porte une part de cette responsabilité collective. »",
+    founderRole: "Fondateur, Mandat des Jeunes Africains",
   },
   en: {
     metaTitle: "The Movement",
@@ -72,6 +81,11 @@ const TEXT: Record<Locale, {
     charterTitle: "The Mandate Charter",
     charterText:
       "The movement's founding text, the Mandate Charter sets out the principles, commitments and accountability mechanisms that unite all members, whatever their country of origin. It is available for download in our Media section.",
+    founderEyebrow: "Founder's word",
+    founderTitle: "The conviction behind the movement",
+    founderQuote:
+      "\"We created this movement because Africa's future can no longer be decided without its youth. Every young person who joins the Mandate carries a share of this collective responsibility.\"",
+    founderRole: "Founder, Mandat des Jeunes Africains",
   },
 };
 
@@ -101,6 +115,27 @@ export default function MouvementPage({ params }: { params: { locale: string } }
         <div className="card p-8">
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.missionTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.missionText}</p>
+        </div>
+      </section>
+
+      <section className="container-page py-20">
+        <div className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
+          <div className="overflow-hidden rounded-xl2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/founder.jpg"
+              alt={t.founderRole}
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
+          <div>
+            <span className="section-eyebrow">{t.founderEyebrow}</span>
+            <h2 className="text-2xl font-extrabold text-brand-brown-dark sm:text-3xl">{t.founderTitle}</h2>
+            <blockquote className="mt-5 text-lg italic leading-relaxed text-brand-brown-dark/80">
+              {t.founderQuote}
+            </blockquote>
+            <p className="mt-5 text-sm font-bold uppercase tracking-wide text-brand-green">{t.founderRole}</p>
+          </div>
         </div>
       </section>
 

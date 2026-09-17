@@ -66,7 +66,7 @@ export default function SengagerPage({ params }: { params: { locale: string } })
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/sengager-hero.jpg" />
 
       <section className="container-page py-20">
         <div className="grid gap-6 sm:grid-cols-2">

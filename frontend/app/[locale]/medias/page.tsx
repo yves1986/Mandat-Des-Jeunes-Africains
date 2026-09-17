@@ -70,7 +70,7 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/medias-hero.jpg" />
 
       <section className="container-page py-20">
         <SectionHeading eyebrow={t.videosEyebrow} title={t.videosTitle} />
