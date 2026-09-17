@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  @apply bg-brand-cream text-brand-brown-dark font-body antialiased;
+  @apply bg-brand-cream text-brand-brown-dark font-body font-light antialiased;
 }
 
 h1,
@@ -31,7 +31,7 @@ h4 {
 }
 
 .btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-95;
 }
 
 .btn-primary {
@@ -51,7 +51,7 @@ h4 {
 }
 
 .card {
-  @apply rounded-xl2 bg-white shadow-card ring-1 ring-black/5;
+  @apply rounded-xl2 bg-white shadow-card ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
 }
 
 .section-eyebrow {

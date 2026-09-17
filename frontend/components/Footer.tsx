@@ -26,7 +26,7 @@ export default function Footer({ locale }: { locale: Locale }) {
     <footer className="bg-brand-brown-dark text-brand-cream">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <Logo theme="light" />
+          <Logo />
           <p className="mt-4 text-sm leading-relaxed text-brand-cream/70">{dict.footer.tagline}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {SOCIALS.map((s) => (

@@ -2,6 +2,8 @@ import Link from "next/link";
 import PillarIcon from "@/components/PillarIcon";
 import ActionCard from "@/components/ActionCard";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import { getContent } from "@/lib/data";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 
@@ -101,37 +103,41 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <div className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
               {content.heroStats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-extrabold text-white sm:text-4xl">{stat.value}</p>
+                  <p className="text-3xl font-extrabold text-white sm:text-4xl">
+                    <AnimatedCounter value={stat.value} />
+                  </p>
                   <p className="mt-1 text-sm text-brand-cream/70">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="hidden overflow-hidden rounded-xl2 shadow-card ring-1 ring-white/10 lg:block">
+          <Reveal className="hidden overflow-hidden rounded-xl2 shadow-card ring-1 ring-white/10 lg:block" delay={0.15}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/hero-team.jpg"
               alt="Jeunes leaders africains engagés dans le mouvement"
               className="aspect-[4/5] w-full object-cover"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* MISSION — centered, ~600px */}
       <section className="flex min-h-[420px] items-center bg-white py-20 sm:min-h-[520px]">
         <div className="container-page">
-          <SectionHeading eyebrow={t.missionEyebrow} title={t.missionTitle} description={t.missionText} align="center" />
+          <Reveal>
+            <SectionHeading eyebrow={t.missionEyebrow} title={t.missionTitle} description={t.missionText} align="center" />
+          </Reveal>
           <div className="mx-auto mt-12 grid max-w-3xl gap-8 sm:grid-cols-3">
-            {content.pillars.map((pillar) => (
-              <div key={pillar.title} className="flex flex-col items-center text-center">
+            {content.pillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 0.1} className="flex flex-col items-center text-center">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-white">
                   <PillarIcon name={pillar.icon} className="h-7 w-7" />
                 </span>
                 <h3 className="mt-4 text-base font-bold text-brand-brown-dark">{pillar.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-brown-dark/70">{pillar.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -140,15 +146,17 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       {/* ACTIONS — grille 3x2 */}
       <section className="bg-brand-cream-dark py-24">
         <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading eyebrow={t.actionsEyebrow} title={t.actionsTitle} description={t.actionsText} />
             <Link href={`/${locale}/actions`} className="btn-secondary">
               {dict.common.seeAll}
             </Link>
-          </div>
+          </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {content.actions.map((action) => (
-              <ActionCard key={action.slug} action={action} locale={locale} />
+            {content.actions.map((action, i) => (
+              <Reveal key={action.slug} delay={(i % 3) * 0.1}>
+                <ActionCard action={action} locale={locale} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -156,7 +164,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       {/* CTA FINAL — bandeau sombre */}
       <section className="bg-brand-brown-dark py-20 text-brand-cream">
-        <div className="container-page text-center">
+        <Reveal className="container-page text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl">{t.finalTitle}</h2>
           <p className="mx-auto mt-3 max-w-xl text-brand-cream/70">{t.finalText}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -167,7 +175,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               {t.ctaDonate}
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

@@ -22,8 +22,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
-        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        // Bahnschrift ships with Windows 10/11 and renders its Bold weight
+        // for headings automatically via font-weight; it is not bundled
+        // here (proprietary Microsoft font) so non-Windows visitors fall
+        // back to the Google-hosted Poppins/Inter pair below.
+        display: ["Bahnschrift", "var(--font-display)", "system-ui", "sans-serif"],
+        body: ["Bahnschrift", "var(--font-body)", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient":

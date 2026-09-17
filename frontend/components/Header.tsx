@@ -2,14 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
 export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dict = getDictionary(locale);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const withoutLocale = pathname.replace(new RegExp(`^/(${locales.join("|")})`), "") || "/";
 
@@ -23,10 +33,18 @@ export default function Header({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-brown/10 bg-brand-cream/90 backdrop-blur">
-      <div className="container-page flex h-20 items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 border-b border-brand-brown/10 bg-brand-cream/90 backdrop-blur transition-shadow duration-300 ${
+        scrolled ? "shadow-md" : ""
+      }`}
+    >
+      <div
+        className={`container-page flex items-center justify-between transition-[height] duration-300 ${
+          scrolled ? "h-20" : "h-24"
+        }`}
+      >
         <Link href={`/${locale}`} onClick={() => setOpen(false)} aria-label="Mandat des Jeunes Africains — Accueil">
-          <Logo />
+          <Logo imageClassName="h-16 w-16" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
