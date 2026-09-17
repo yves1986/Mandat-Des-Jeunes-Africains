@@ -71,56 +71,43 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <>
-      {/* HERO — ~700px */}
-      <section className="relative overflow-hidden bg-hero-gradient text-brand-cream">
-        <svg
-          viewBox="0 0 100 100"
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-10 h-[420px] w-[420px] opacity-[0.08] sm:-right-10"
-        >
-          <path
-            fill="currentColor"
-            d="M52.8 16.4c3.6.2 6.9 1.9 9.4 4.5 2 2.1 3.1 4.8 4.9 7 1.4 1.7 3.3 2.9 4.2 5 .9 2.1.2 4.4-.4 6.5-.8 2.8-1.6 5.7-1.1 8.6.4 2.2 1.7 4.1 2 6.3.3 2.5-.9 4.8-1.1 7.3-.2 2.6 1 5 .8 7.6-.2 2.8-2.1 5-3.9 7-2.5 2.8-5.3 5.4-8.9 6.7-2.6 1-5.5 1.1-8.1 2.1-2.3.9-4.3 2.5-6.7 3.1-2.9.7-5.9-.1-8.7-1-2.4-.8-4.7-2-6.6-3.7-2-1.8-3.4-4.2-5.4-6-2-1.8-4.6-2.9-6.3-5-1.6-2-2.3-4.6-2.3-7.1 0-2.3.9-4.4 1-6.7.1-2.4-.8-4.6-.8-7 0-2.5 1.1-4.8 1.4-7.3.3-2.6-.4-5.1.4-7.6.7-2.3 2.5-4 3.7-6.1 1.3-2.3 2-4.9 3.9-6.8 2.1-2.1 5-3 7.7-4.3 2.5-1.2 4.8-2.9 7.5-3.6 3-.8 6.1-.1 9.1-.5.7-.1 1.3-.1 2-.1z"
-          />
-        </svg>
+      {/* HERO — full-bleed photo background */}
+      <section className="relative isolate flex min-h-[620px] items-center overflow-hidden text-brand-cream sm:min-h-[700px] lg:min-h-[820px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/hero-team.jpg"
+          alt="Jeunes leaders africains engagés dans le mouvement"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-brown-dark/95 via-brand-brown-dark/75 to-brand-brown-dark/30" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-brown-dark/90 via-transparent to-transparent" />
 
-        <div className="container-page relative grid min-h-[560px] items-center gap-12 py-20 sm:min-h-[640px] lg:min-h-[700px] lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <span className="pill-tag bg-brand-gold/15 text-brand-gold">{t.tag}</span>
-            <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
-              {t.h1a} <span className="text-brand-gold">{t.h1b}</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-cream/80">{t.lead}</p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link href={`/${locale}/sengager`} className="btn-primary">
-                {t.ctaJoin}
-              </Link>
-              <Link href={`/${locale}/mouvement`} className="btn-outline">
-                {t.ctaDiscover}
-              </Link>
-            </div>
-
-            <div className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
-              {content.heroStats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-3xl font-extrabold text-white sm:text-4xl">
-                    <AnimatedCounter value={stat.value} />
-                  </p>
-                  <p className="mt-1 text-sm text-brand-cream/70">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+        <Reveal className="container-page relative py-24">
+          <span className="pill-tag bg-brand-gold/15 text-brand-gold">{t.tag}</span>
+          <h1 className="mt-6 max-w-2xl text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+            {t.h1a} <span className="text-brand-gold">{t.h1b}</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-cream/85">{t.lead}</p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link href={`/${locale}/sengager`} className="btn-primary">
+              {t.ctaJoin}
+            </Link>
+            <Link href={`/${locale}/mouvement`} className="btn-outline">
+              {t.ctaDiscover}
+            </Link>
           </div>
 
-          <Reveal className="hidden overflow-hidden rounded-xl2 shadow-card ring-1 ring-white/10 lg:block" delay={0.15}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/hero-team.jpg"
-              alt="Jeunes leaders africains engagés dans le mouvement"
-              className="aspect-video w-full object-cover"
-            />
-          </Reveal>
-        </div>
+          <div className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/20 pt-8">
+            {content.heroStats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-3xl font-extrabold text-white sm:text-4xl">
+                  <AnimatedCounter value={stat.value} />
+                </p>
+                <p className="mt-1 text-sm text-brand-cream/80">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* MISSION — centered, ~600px */}
