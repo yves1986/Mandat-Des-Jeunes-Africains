@@ -64,7 +64,7 @@ export default function ActionsPage({ params }: { params: { locale: string } }) 
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/actions-hero.jpg" />
 
       <section className="container-page py-16">
         <div className="flex flex-wrap gap-3">
