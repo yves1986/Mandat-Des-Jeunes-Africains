@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import AfricaTicker from "@/components/AfricaTicker";
 import { locales, isLocale, type Locale } from "@/lib/i18n";
 
 export function generateStaticParams() {
@@ -53,6 +54,7 @@ export default function LocaleLayout({
 
   return (
     <>
+      <AfricaTicker locale={locale} />
       <Header locale={locale} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} />

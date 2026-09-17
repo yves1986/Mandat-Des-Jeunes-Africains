@@ -6,9 +6,9 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 
 const initialForm = { fullName: "", email: "", subject: "", message: "" };
 
-export default function ContactForm({ locale }: { locale: Locale }) {
+export default function ContactForm({ locale, initialSubject }: { locale: Locale; initialSubject?: string }) {
   const dict = getDictionary(locale);
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(() => ({ ...initialForm, subject: initialSubject ?? "" }));
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [feedback, setFeedback] = useState("");
 

@@ -20,6 +20,7 @@ export default function Footer({ locale }: { locale: Locale }) {
     { href: `/${locale}/medias`, label: dict.nav.media },
     { href: `/${locale}/sengager`, label: dict.nav.getInvolved },
     { href: `/${locale}/contact`, label: dict.nav.contact },
+    { href: `/${locale}/annonceurs`, label: dict.footer.advertisers },
   ];
 
   return (
