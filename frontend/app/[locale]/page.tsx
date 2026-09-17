@@ -82,28 +82,39 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           />
         </svg>
 
-        <div className="container-page relative flex min-h-[560px] flex-col justify-center py-20 sm:min-h-[640px] lg:min-h-[700px]">
-          <span className="pill-tag bg-brand-gold/15 text-brand-gold">{t.tag}</span>
-          <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
-            {t.h1a} <span className="text-brand-gold">{t.h1b}</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-cream/80">{t.lead}</p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Link href={`/${locale}/sengager`} className="btn-primary">
-              {t.ctaJoin}
-            </Link>
-            <Link href={`/${locale}/mouvement`} className="btn-outline">
-              {t.ctaDiscover}
-            </Link>
+        <div className="container-page relative grid min-h-[560px] items-center gap-12 py-20 sm:min-h-[640px] lg:min-h-[700px] lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="pill-tag bg-brand-gold/15 text-brand-gold">{t.tag}</span>
+            <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+              {t.h1a} <span className="text-brand-gold">{t.h1b}</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-cream/80">{t.lead}</p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link href={`/${locale}/sengager`} className="btn-primary">
+                {t.ctaJoin}
+              </Link>
+              <Link href={`/${locale}/mouvement`} className="btn-outline">
+                {t.ctaDiscover}
+              </Link>
+            </div>
+
+            <div className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
+              {content.heroStats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-3xl font-extrabold text-white sm:text-4xl">{stat.value}</p>
+                  <p className="mt-1 text-sm text-brand-cream/70">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
-            {content.heroStats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl font-extrabold text-white sm:text-4xl">{stat.value}</p>
-                <p className="mt-1 text-sm text-brand-cream/70">{stat.label}</p>
-              </div>
-            ))}
+          <div className="hidden overflow-hidden rounded-xl2 shadow-card ring-1 ring-white/10 lg:block">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/hero-team.jpg"
+              alt="Jeunes leaders africains engagés dans le mouvement"
+              className="aspect-[4/5] w-full object-cover"
+            />
           </div>
         </div>
       </section>
