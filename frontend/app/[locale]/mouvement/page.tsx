@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import CutoutImage from "@/components/CutoutImage";
 import Reveal from "@/components/Reveal";
 import { getContent } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
@@ -106,17 +107,27 @@ export default function MouvementPage({ params }: { params: { locale: string } }
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} cutout="/images/mouvement-hero.png" />
 
-      <section id="mission" className="container-page scroll-mt-28 grid gap-12 py-20 lg:grid-cols-2">
-        <Reveal className="card p-8">
-          <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.visionTitle}</h2>
-          <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.visionText}</p>
+      <section id="mission" className="container-page scroll-mt-28 grid gap-12 py-20 lg:grid-cols-[1fr_1.1fr]">
+        <Reveal className="order-2 hidden justify-self-center lg:order-1 lg:block">
+          <CutoutImage
+            src="/images/mission-visual.png"
+            alt=""
+            fadeTo="#EDE2C7"
+            className="h-[420px] w-full max-w-sm"
+          />
         </Reveal>
-        <Reveal delay={0.1} className="card p-8">
-          <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.missionTitle}</h2>
-          <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.missionText}</p>
-        </Reveal>
+        <div className="order-1 grid gap-8 lg:order-2">
+          <Reveal className="card p-8">
+            <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.visionTitle}</h2>
+            <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.visionText}</p>
+          </Reveal>
+          <Reveal delay={0.1} className="card p-8">
+            <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.missionTitle}</h2>
+            <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.missionText}</p>
+          </Reveal>
+        </div>
       </section>
 
       <section id="fondateur" className="container-page scroll-mt-28 py-20">
