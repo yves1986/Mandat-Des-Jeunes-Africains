@@ -119,13 +119,13 @@ export default function MouvementPage({ params }: { params: { locale: string } }
       </section>
 
       <section id="fondateur" className="container-page scroll-mt-28 py-20">
-        <div className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
-          <div className="overflow-hidden rounded-xl2">
+        <div className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[1.1fr_1fr] lg:p-12">
+          <div className="overflow-hidden rounded-xl2 bg-brand-cream-dark">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/founder.png"
+              src="/images/founder.jpeg"
               alt={t.founderRole}
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-[3/4] w-full object-cover object-top lg:aspect-[4/5]"
             />
           </div>
           <div>
