@@ -198,7 +198,7 @@ const fr: Content = {
     { year: "2025", title: "40 pays et plus", description: "Le mouvement rassemble aujourd'hui plus de 12 000 jeunes actifs dans 40 pays." },
   ],
   offices: [
-    { region: "Afrique de l'Ouest", city: "Dakar, Sénégal · Abidjan, Côte d'Ivoire" },
+    { region: "Afrique de l'Ouest", city: "Abidjan, Côte d'Ivoire" },
     { region: "Afrique de l'Est", city: "Nairobi, Kenya" },
     { region: "Afrique du Nord", city: "Rabat, Maroc" },
     { region: "Afrique Centrale & Australe", city: "Kinshasa, RDC" },
@@ -364,7 +364,7 @@ const en: Content = {
     { year: "2025", title: "40 countries and counting", description: "The movement now brings together more than 12,000 active youth across 40 countries." },
   ],
   offices: [
-    { region: "West Africa", city: "Dakar, Senegal · Abidjan, Côte d'Ivoire" },
+    { region: "West Africa", city: "Abidjan, Côte d'Ivoire" },
     { region: "East Africa", city: "Nairobi, Kenya" },
     { region: "North Africa", city: "Rabat, Morocco" },
     { region: "Central & Southern Africa", city: "Kinshasa, DRC" },

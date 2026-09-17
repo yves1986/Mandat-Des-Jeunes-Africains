@@ -13,7 +13,7 @@ const TEXT: Record<Locale, { title: string; description: string; sections: { tit
         title: "1. Éditeur du site",
         body: [
           "Le site mandatdesjeunesafricains.org est édité par l'association Mandat des Jeunes Africains, mouvement panafricain à but non lucratif.",
-          "Sièges sociaux : Dakar, Sénégal et Abidjan, Côte d'Ivoire. Contact : contact@mandatdesjeunesafricains.org.",
+          "Siège social : Abidjan, Côte d'Ivoire. Contact : contact@mandatdesjeunesafricains.org.",
         ],
       },
       {
@@ -46,7 +46,7 @@ const TEXT: Record<Locale, { title: string; description: string; sections: { tit
         title: "1. Website publisher",
         body: [
           "The website mandatdesjeunesafricains.org is published by the Mandat des Jeunes Africains association, a pan-African non-profit movement.",
-          "Registered offices: Dakar, Senegal and Abidjan, Côte d'Ivoire. Contact: contact@mandatdesjeunesafricains.org.",
+          "Registered office: Abidjan, Côte d'Ivoire. Contact: contact@mandatdesjeunesafricains.org.",
         ],
       },
       {
