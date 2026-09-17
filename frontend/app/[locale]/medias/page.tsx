@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import VideoCard from "@/components/VideoCard";
 import PressQuote from "@/components/PressQuote";
+import Reveal from "@/components/Reveal";
 import { getContent } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
@@ -73,28 +74,38 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
       <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/medias-hero.webp" />
 
       <section id="videos" className="container-page scroll-mt-28 py-20">
-        <SectionHeading eyebrow={t.videosEyebrow} title={t.videosTitle} />
+        <Reveal>
+          <SectionHeading eyebrow={t.videosEyebrow} title={t.videosTitle} />
+        </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {content.videos.map((video) => (
-            <VideoCard key={video.title} title={video.title} duration={video.duration} />
+          {content.videos.map((video, i) => (
+            <Reveal key={video.title} delay={i * 0.1}>
+              <VideoCard title={video.title} duration={video.duration} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section id="presse" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page">
-          <SectionHeading eyebrow={t.pressEyebrow} title={t.pressTitle} />
+          <Reveal>
+            <SectionHeading eyebrow={t.pressEyebrow} title={t.pressTitle} />
+          </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {content.pressQuotes.map((item) => (
-              <PressQuote key={item.outlet} outlet={item.outlet} quote={item.quote} />
+            {content.pressQuotes.map((item, i) => (
+              <Reveal key={item.outlet} delay={i * 0.1}>
+                <PressQuote outlet={item.outlet} quote={item.quote} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section id="publications" className="container-page scroll-mt-28 py-20">
-        <SectionHeading eyebrow={t.pubEyebrow} title={t.pubTitle} description={t.pubText} />
-        <div className="mt-10 divide-y divide-brand-brown/10 overflow-hidden rounded-xl2 bg-white shadow-card ring-1 ring-black/5">
+        <Reveal>
+          <SectionHeading eyebrow={t.pubEyebrow} title={t.pubTitle} description={t.pubText} />
+        </Reveal>
+        <Reveal delay={0.1} className="mt-10 divide-y divide-brand-brown/10 overflow-hidden rounded-xl2 bg-white shadow-card ring-1 ring-black/5">
           {content.publications.map((pub) => (
             <div key={pub.title} className="flex items-center justify-between gap-4 p-6">
               <div>
@@ -106,7 +117,7 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
               <button className="btn-secondary shrink-0 !px-5 !py-2 text-xs">{t.download}</button>
             </div>
           ))}
-        </div>
+        </Reveal>
       </section>
     </>
   );

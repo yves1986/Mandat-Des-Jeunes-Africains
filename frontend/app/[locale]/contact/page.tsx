@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 import { getContent } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
@@ -59,7 +60,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
       <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
       <section className="container-page grid gap-12 py-20 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
+        <Reveal>
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.coordinates}</h2>
           <ul className="mt-6 space-y-4 text-sm text-brand-brown-dark/80">
             <li>
@@ -87,9 +88,11 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <ContactForm locale={locale} />
+        <Reveal delay={0.15}>
+          <ContactForm locale={locale} />
+        </Reveal>
       </section>
     </>
   );

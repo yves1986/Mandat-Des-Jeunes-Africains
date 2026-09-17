@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 import { getContent } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
@@ -108,24 +109,24 @@ export default function MouvementPage({ params }: { params: { locale: string } }
       <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
       <section id="mission" className="container-page scroll-mt-28 grid gap-12 py-20 lg:grid-cols-2">
-        <div className="card p-8">
+        <Reveal className="card p-8">
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.visionTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.visionText}</p>
-        </div>
-        <div className="card p-8">
+        </Reveal>
+        <Reveal delay={0.1} className="card p-8">
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.missionTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.missionText}</p>
-        </div>
+        </Reveal>
       </section>
 
       <section id="fondateur" className="container-page scroll-mt-28 py-20">
-        <div className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[1.1fr_1fr] lg:p-12">
+        <Reveal className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[1.1fr_1fr] lg:p-12">
           <div className="overflow-hidden rounded-xl2 bg-brand-cream-dark">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/founder.jpeg"
               alt={t.founderRole}
-              className="aspect-[3/4] w-full object-cover object-top lg:aspect-[4/5]"
+              className="aspect-[3/4] w-full object-cover object-top transition-transform duration-500 hover:scale-105 lg:aspect-[4/5]"
             />
           </div>
           <div>
@@ -136,41 +137,45 @@ export default function MouvementPage({ params }: { params: { locale: string } }
             </blockquote>
             <p className="mt-5 text-sm font-bold uppercase tracking-wide text-brand-green">{t.founderRole}</p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section id="valeurs" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page">
-          <SectionHeading eyebrow={t.valuesEyebrow} title={t.valuesTitle} align="center" />
+          <Reveal>
+            <SectionHeading eyebrow={t.valuesEyebrow} title={t.valuesTitle} align="center" />
+          </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {content.values.map((value) => (
-              <div key={value.title} className="card p-6 text-center">
+            {content.values.map((value, i) => (
+              <Reveal key={value.title} delay={i * 0.08} className="card p-6 text-center">
                 <h3 className="text-lg font-bold text-brand-green">{value.title}</h3>
                 <p className="mt-3 text-sm text-brand-brown-dark/70">{value.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section id="histoire" className="container-page scroll-mt-28 py-20">
-        <SectionHeading eyebrow={t.historyEyebrow} title={t.historyTitle} />
+        <Reveal>
+          <SectionHeading eyebrow={t.historyEyebrow} title={t.historyTitle} />
+        </Reveal>
         <div className="mt-12 space-y-8 border-l-2 border-brand-green/30 pl-8">
-          {content.timeline.map((item) => (
-            <div key={item.year} className="relative">
+          {content.timeline.map((item, i) => (
+            <Reveal key={item.year} delay={i * 0.08} y={16} className="relative">
               <span className="absolute -left-[38px] flex h-6 w-6 items-center justify-center rounded-full bg-brand-green text-[10px] font-bold text-white">
                 •
               </span>
               <p className="text-sm font-bold uppercase tracking-widest text-brand-red">{item.year}</p>
               <h3 className="mt-1 text-lg font-bold text-brand-brown-dark">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-brand-brown-dark/70">{item.description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section id="gouvernance" className="scroll-mt-28 bg-brand-brown-dark py-20 text-brand-cream">
-        <div className="container-page grid gap-10 lg:grid-cols-2">
+        <Reveal className="container-page grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="text-2xl font-extrabold">{t.govTitle}</h2>
             <p className="mt-4 text-sm leading-relaxed text-brand-cream/70">{t.govText}</p>
@@ -179,7 +184,7 @@ export default function MouvementPage({ params }: { params: { locale: string } }
             <h2 className="text-2xl font-extrabold">{t.charterTitle}</h2>
             <p className="mt-4 text-sm leading-relaxed text-brand-cream/70">{t.charterText}</p>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

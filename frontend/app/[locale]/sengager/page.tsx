@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import EngagementForm from "@/components/EngagementForm";
+import Reveal from "@/components/Reveal";
 import { getContent, type EngagementWayId } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
@@ -77,18 +78,20 @@ export default function SengagerPage({
 
       <section className="container-page py-20">
         <div className="grid gap-6 sm:grid-cols-2">
-          {content.engagementWays.map((way) => (
-            <Link key={way.id} href={`/${locale}/sengager?type=${way.id}#form`} className="card block p-7">
-              <h3 className="text-lg font-bold text-brand-brown-dark">{way.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-brown-dark/70">{way.description}</p>
-            </Link>
+          {content.engagementWays.map((way, i) => (
+            <Reveal key={way.id} delay={i * 0.08}>
+              <Link href={`/${locale}/sengager?type=${way.id}#form`} className="card block p-7">
+                <h3 className="text-lg font-bold text-brand-brown-dark">{way.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-brand-brown-dark/70">{way.description}</p>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section id="form" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <Reveal>
             <SectionHeading eyebrow={t.formEyebrow} title={t.formTitle} description={t.formText} />
             <ul className="mt-8 space-y-4 text-sm text-brand-brown-dark/80">
               <li className="flex gap-3">
@@ -101,8 +104,10 @@ export default function SengagerPage({
                 <span className="text-brand-green">03.</span> {t.step3}
               </li>
             </ul>
-          </div>
-          <EngagementForm locale={locale} initialType={searchParams.type as EngagementWayId} />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <EngagementForm locale={locale} initialType={searchParams.type as EngagementWayId} />
+          </Reveal>
         </div>
       </section>
     </>
