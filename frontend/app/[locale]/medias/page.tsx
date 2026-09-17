@@ -70,9 +70,9 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/medias-hero.jpg" />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/medias-hero.webp" />
 
-      <section className="container-page py-20">
+      <section id="videos" className="container-page scroll-mt-28 py-20">
         <SectionHeading eyebrow={t.videosEyebrow} title={t.videosTitle} />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {content.videos.map((video) => (
@@ -81,7 +81,7 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <section className="bg-brand-cream-dark py-20">
+      <section id="presse" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page">
           <SectionHeading eyebrow={t.pressEyebrow} title={t.pressTitle} />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -92,7 +92,7 @@ export default function MediasPage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section id="publications" className="container-page scroll-mt-28 py-20">
         <SectionHeading eyebrow={t.pubEyebrow} title={t.pubTitle} description={t.pubText} />
         <div className="mt-10 divide-y divide-brand-brown/10 overflow-hidden rounded-xl2 bg-white shadow-card ring-1 ring-black/5">
           {content.publications.map((pub) => (

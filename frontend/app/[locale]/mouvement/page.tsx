@@ -107,7 +107,7 @@ export default function MouvementPage({ params }: { params: { locale: string } }
     <>
       <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
-      <section className="container-page grid gap-12 py-20 lg:grid-cols-2">
+      <section id="mission" className="container-page scroll-mt-28 grid gap-12 py-20 lg:grid-cols-2">
         <div className="card p-8">
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.visionTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-brand-brown-dark/70">{t.visionText}</p>
@@ -118,12 +118,12 @@ export default function MouvementPage({ params }: { params: { locale: string } }
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section id="fondateur" className="container-page scroll-mt-28 py-20">
         <div className="grid items-center gap-10 rounded-xl2 bg-white p-8 shadow-card ring-1 ring-black/5 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
           <div className="overflow-hidden rounded-xl2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/founder.jpg"
+              src="/images/founder.png"
               alt={t.founderRole}
               className="aspect-[4/5] w-full object-cover"
             />
@@ -139,7 +139,7 @@ export default function MouvementPage({ params }: { params: { locale: string } }
         </div>
       </section>
 
-      <section className="bg-brand-cream-dark py-20">
+      <section id="valeurs" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page">
           <SectionHeading eyebrow={t.valuesEyebrow} title={t.valuesTitle} align="center" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -153,7 +153,7 @@ export default function MouvementPage({ params }: { params: { locale: string } }
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section id="histoire" className="container-page scroll-mt-28 py-20">
         <SectionHeading eyebrow={t.historyEyebrow} title={t.historyTitle} />
         <div className="mt-12 space-y-8 border-l-2 border-brand-green/30 pl-8">
           {content.timeline.map((item) => (
@@ -169,7 +169,7 @@ export default function MouvementPage({ params }: { params: { locale: string } }
         </div>
       </section>
 
-      <section className="bg-brand-brown-dark py-20 text-brand-cream">
+      <section id="gouvernance" className="scroll-mt-28 bg-brand-brown-dark py-20 text-brand-cream">
         <div className="container-page grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="text-2xl font-extrabold">{t.govTitle}</h2>

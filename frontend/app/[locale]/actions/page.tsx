@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ActionCard from "@/components/ActionCard";
-import { getContent } from "@/lib/data";
+import { getContent, type ActionCategory } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
-const CATEGORIES: Record<Locale, string[]> = {
-  fr: ["Toutes", "Plaidoyer", "Formation", "Mobilisation", "Terrain"],
-  en: ["All", "Advocacy", "Training", "Mobilization", "Field action"],
+const CATEGORY_KEYS: ActionCategory[] = ["Plaidoyer", "Formation", "Mobilisation", "Terrain"];
+
+const CATEGORY_LABELS: Record<Locale, Record<ActionCategory, string>> = {
+  fr: { Plaidoyer: "Plaidoyer", Formation: "Formation", Mobilisation: "Mobilisation", Terrain: "Terrain" },
+  en: { Plaidoyer: "Advocacy", Formation: "Training", Mobilisation: "Mobilization", Terrain: "Field action" },
 };
+
+const ALL_LABEL: Record<Locale, string> = { fr: "Toutes", en: "All" };
 
 const TEXT: Record<Locale, {
   metaTitle: string;
@@ -56,32 +61,54 @@ export async function generateMetadata({
   return { title: TEXT[locale].metaTitle, description: TEXT[locale].metaDescription };
 }
 
-export default function ActionsPage({ params }: { params: { locale: string } }) {
+export default function ActionsPage({
+  params,
+  searchParams,
+}: {
+  params: { locale: string };
+  searchParams: { cat?: string };
+}) {
   const locale: Locale = isLocale(params.locale) ? params.locale : "fr";
   const t = TEXT[locale];
-  const categories = CATEGORIES[locale];
   const content = getContent(locale);
+
+  const activeCategory = CATEGORY_KEYS.includes(searchParams.cat as ActionCategory)
+    ? (searchParams.cat as ActionCategory)
+    : undefined;
+
+  const visibleActions = activeCategory
+    ? content.actions.filter((action) => action.category === activeCategory)
+    : content.actions;
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/actions-hero.jpg" />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/actions-hero.png" />
 
       <section className="container-page py-16">
         <div className="flex flex-wrap gap-3">
-          {categories.map((cat, i) => (
-            <span
+          <Link
+            href={`/${locale}/actions`}
+            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+              !activeCategory ? "bg-brand-green text-white" : "bg-brand-cream-dark text-brand-brown-dark/70"
+            }`}
+          >
+            {ALL_LABEL[locale]}
+          </Link>
+          {CATEGORY_KEYS.map((cat) => (
+            <Link
               key={cat}
-              className={`rounded-full px-5 py-2 text-sm font-semibold ${
-                i === 0 ? "bg-brand-green text-white" : "bg-brand-cream-dark text-brand-brown-dark/70"
+              href={`/${locale}/actions?cat=${cat}`}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+                activeCategory === cat ? "bg-brand-green text-white" : "bg-brand-cream-dark text-brand-brown-dark/70"
               }`}
             >
-              {cat}
-            </span>
+              {CATEGORY_LABELS[locale][cat]}
+            </Link>
           ))}
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {content.actions.map((action) => (
+          {visibleActions.map((action) => (
             <ActionCard key={action.slug} action={action} locale={locale} />
           ))}
         </div>

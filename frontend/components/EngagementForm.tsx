@@ -5,15 +5,22 @@ import { submitEngagement } from "@/lib/api";
 import { getContent, ENGAGEMENT_API_VALUE, type EngagementWayId } from "@/lib/data";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function EngagementForm({ locale }: { locale: Locale }) {
+export default function EngagementForm({
+  locale,
+  initialType,
+}: {
+  locale: Locale;
+  initialType?: EngagementWayId;
+}) {
   const dict = getDictionary(locale);
   const engagementWays = getContent(locale).engagementWays;
+  const defaultType = engagementWays.some((w) => w.id === initialType) ? (initialType as EngagementWayId) : engagementWays[0].id;
 
   const initialForm = {
     fullName: "",
     email: "",
     country: "",
-    engagementType: engagementWays[0].id as EngagementWayId,
+    engagementType: defaultType,
     motivation: "",
   };
 

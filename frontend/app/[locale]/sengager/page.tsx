@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import EngagementForm from "@/components/EngagementForm";
-import { getContent } from "@/lib/data";
+import { getContent, type EngagementWayId } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
 const TEXT: Record<Locale, {
@@ -59,27 +60,33 @@ export async function generateMetadata({
   return { title: TEXT[locale].metaTitle, description: TEXT[locale].metaDescription };
 }
 
-export default function SengagerPage({ params }: { params: { locale: string } }) {
+export default function SengagerPage({
+  params,
+  searchParams,
+}: {
+  params: { locale: string };
+  searchParams: { type?: string };
+}) {
   const locale: Locale = isLocale(params.locale) ? params.locale : "fr";
   const t = TEXT[locale];
   const content = getContent(locale);
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/sengager-hero.jpg" />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} image="/images/sengager-hero.png" />
 
       <section className="container-page py-20">
         <div className="grid gap-6 sm:grid-cols-2">
           {content.engagementWays.map((way) => (
-            <div key={way.id} className="card p-7">
+            <Link key={way.id} href={`/${locale}/sengager?type=${way.id}#form`} className="card block p-7">
               <h3 className="text-lg font-bold text-brand-brown-dark">{way.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-brand-brown-dark/70">{way.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="bg-brand-cream-dark py-20">
+      <section id="form" className="scroll-mt-28 bg-brand-cream-dark py-20">
         <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeading eyebrow={t.formEyebrow} title={t.formTitle} description={t.formText} />
@@ -95,7 +102,7 @@ export default function SengagerPage({ params }: { params: { locale: string } })
               </li>
             </ul>
           </div>
-          <EngagementForm locale={locale} />
+          <EngagementForm locale={locale} initialType={searchParams.type as EngagementWayId} />
         </div>
       </section>
     </>
