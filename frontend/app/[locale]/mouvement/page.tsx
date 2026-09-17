@@ -107,12 +107,12 @@ export default function MouvementPage({ params }: { params: { locale: string } }
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} cutout="/images/mouvement-hero.png" />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} cutout="/images/groupe_de_travail.png" />
 
       <section id="mission" className="container-page scroll-mt-28 grid gap-12 py-20 lg:grid-cols-[1fr_1.1fr]">
         <Reveal className="order-2 hidden justify-self-center lg:order-1 lg:block">
           <CutoutImage
-            src="/images/mission-visual.png"
+            src="/images/woman.png"
             alt=""
             fadeTo="#EDE2C7"
             className="h-[420px] w-full max-w-sm"
