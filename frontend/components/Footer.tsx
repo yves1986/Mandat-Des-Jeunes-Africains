@@ -4,11 +4,13 @@ import NewsletterForm from "./NewsletterForm";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 const SOCIALS = [
-  { label: "Facebook", href: "https://facebook.com" },
-  { label: "X / Twitter", href: "https://x.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "YouTube", href: "https://youtube.com" },
+  { label: "Facebook", href: "https://www.facebook.com/share/1DXzTbcRj2/?mibextid=wwXIfr" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/mandats_desjeunesafricains?stkn=MWd3dXJ1cG41NzBpMA%3D%3D&utm_source=qr",
+  },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/mandat-des-jeunes-africains/" },
+  { label: "YouTube", href: "https://youtube.com/@mandatdesjeunesafricains?si=F6bZysoVvGvJJpj2" },
 ];
 
 export default function Footer({ locale }: { locale: Locale }) {
