@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ActionCard from "@/components/ActionCard";
+import Reveal from "@/components/Reveal";
 import { getContent, type ActionCategory } from "@/lib/data";
 import { isLocale, type Locale } from "@/lib/i18n";
 
@@ -108,20 +109,22 @@ export default function ActionsPage({
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visibleActions.map((action) => (
-            <ActionCard key={action.slug} action={action} locale={locale} />
+          {visibleActions.map((action, i) => (
+            <Reveal key={action.slug} delay={(i % 3) * 0.1}>
+              <ActionCard action={action} locale={locale} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="bg-brand-cream-dark py-16">
-        <div className="container-page flex flex-col items-center gap-4 text-center">
+        <Reveal className="container-page flex flex-col items-center gap-4 text-center">
           <h2 className="text-2xl font-extrabold text-brand-brown-dark">{t.ctaTitle}</h2>
           <p className="max-w-xl text-sm text-brand-brown-dark/70">{t.ctaText}</p>
           <a href={`/${locale}/contact`} className="btn-secondary">
             {t.ctaButton}
           </a>
-        </div>
+        </Reveal>
       </section>
     </>
   );

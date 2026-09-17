@@ -29,6 +29,7 @@ type Dictionary = {
     stayInformedText: string;
     rights: string;
     slogan: string;
+    advertisers: string;
   };
   forms: {
     fullName: string;
@@ -111,6 +112,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Recevez nos actualités, campagnes et opportunités d'engagement.",
       rights: "Tous droits réservés.",
       slogan: "Le mandat appartient à la jeunesse africaine.",
+      advertisers: "Annonceurs",
     },
     forms: {
       fullName: "Nom complet",
@@ -192,6 +194,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       stayInformedText: "Get our news, campaigns and opportunities to get involved.",
       rights: "All rights reserved.",
       slogan: "The mandate belongs to African youth.",
+      advertisers: "Advertisers",
     },
     forms: {
       fullName: "Full name",
