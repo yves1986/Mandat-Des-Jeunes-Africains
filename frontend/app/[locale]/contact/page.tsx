@@ -57,7 +57,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} cutout="/images/contact-hero.png" />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} cutout="/images/woman-worker.png" />
 
       <section className="container-page grid gap-12 py-20 lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal>
