@@ -66,7 +66,7 @@ export default function Footer({ locale }: { locale: Locale }) {
             {dict.footer.contact}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-brand-cream/80">
-            <li>Dakar, Sénégal — Siège panafricain</li>
+            <li>Dakar, Sénégal & Abidjan, Côte d'Ivoire — Sièges panafricains</li>
             <li>
               <a href="mailto:contact@mandatdesjeunesafricains.org" className="hover:text-white">
                 contact@mandatdesjeunesafricains.org
