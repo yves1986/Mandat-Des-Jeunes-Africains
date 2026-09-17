@@ -11,7 +11,7 @@ export default function Logo({ className = "", imageClassName = "h-14 w-14" }: L
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/images/logo.png"
+      src="/images/logo.jpg"
       alt="Mandat des Jeunes Africains"
       className={`shrink-0 object-contain ${imageClassName} ${className}`}
     />

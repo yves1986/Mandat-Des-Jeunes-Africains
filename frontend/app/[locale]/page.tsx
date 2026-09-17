@@ -117,7 +117,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <img
               src="/images/hero-team.jpg"
               alt="Jeunes leaders africains engagés dans le mouvement"
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-video w-full object-cover"
             />
           </Reveal>
         </div>
