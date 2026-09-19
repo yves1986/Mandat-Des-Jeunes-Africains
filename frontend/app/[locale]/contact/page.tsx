@@ -73,8 +73,8 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
             <li>
               <span className="font-semibold text-brand-brown-dark">{t.phoneLabel}</span>
               <br />
-              <a href="tel:+221000000000" className="text-brand-green">
-                +221 00 000 00 00
+              <a href="tel:+225000000000" className="text-brand-green">
+                +225 00 000 00 00
               </a>
             </li>
           </ul>

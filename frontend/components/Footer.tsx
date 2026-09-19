@@ -11,6 +11,8 @@ const SOCIALS = [
   },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/mandat-des-jeunes-africains/" },
   { label: "YouTube", href: "https://youtube.com/@mandatdesjeunesafricains?si=F6bZysoVvGvJJpj2" },
+  { label: "X", href: "https://x.com/mandatdesjdyof?s=11&t=g_Z40_amMkLW4f08F8rETQ" },
+  { label: "TikTok", href: "https://www.tiktok.com/@mandatdesjeunes?_r=1&_t=ZG-99rb2iuOh0r" },
 ];
 
 export default function Footer({ locale }: { locale: Locale }) {
@@ -73,8 +75,8 @@ export default function Footer({ locale }: { locale: Locale }) {
               </a>
             </li>
             <li>
-              <a href="tel:+221000000000" className="hover:text-white">
-                +221 00 000 00 00
+              <a href="tel:+225000000000" className="hover:text-white">
+                +225 00 000 00 00
               </a>
             </li>
           </ul>
