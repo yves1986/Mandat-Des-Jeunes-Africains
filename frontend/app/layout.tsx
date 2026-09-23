@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://mandatdesjeunesafricains.org"),
   title: {
     default: "Mandat des Jeunes Africains",
     template: "%s | Mandat des Jeunes Africains",
