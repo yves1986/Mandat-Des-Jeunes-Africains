@@ -4,11 +4,15 @@ const connectDB = require("./config/db");
 const AdminUser = require("./models/AdminUser");
 
 async function seedAdmin() {
-  const email = process.env.ADMIN_EMAIL;
-  const password = process.env.ADMIN_PASSWORD;
+  const [, , argEmail, argPassword, argFullName] = process.argv;
+  const email = argEmail || process.env.ADMIN_EMAIL;
+  const password = argPassword || process.env.ADMIN_PASSWORD;
+  const fullName = argFullName || "Administrateur MDJA";
 
   if (!email || !password) {
-    console.error("[seed:admin] ADMIN_EMAIL and ADMIN_PASSWORD must be set in your .env file.");
+    console.error(
+      "[seed:admin] Provide ADMIN_EMAIL and ADMIN_PASSWORD in your .env, or run: node src/seedAdmin.js <email> <password> [\"Full Name\"]",
+    );
     process.exit(1);
   }
 
@@ -18,7 +22,7 @@ async function seedAdmin() {
 
   await AdminUser.findOneAndUpdate(
     { email: email.toLowerCase() },
-    { email: email.toLowerCase(), passwordHash, fullName: "Administrateur MDJA" },
+    { email: email.toLowerCase(), passwordHash, fullName },
     { upsert: true, new: true, setDefaultsOnInsert: true },
   );
 
