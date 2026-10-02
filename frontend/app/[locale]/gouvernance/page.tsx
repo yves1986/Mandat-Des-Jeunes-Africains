@@ -164,14 +164,14 @@ function MemberCard({ member, locale, large = false }: { member: Member; locale:
     <div className={`card flex flex-col items-center p-6 text-center ${large ? "sm:p-10" : ""}`}>
       <div
         className={`overflow-hidden rounded-full bg-brand-cream-dark ring-4 ring-brand-gold/20 ${
-          large ? "h-40 w-40 sm:h-48 sm:w-48" : "h-28 w-28"
+          large ? "h-52 w-52 sm:h-60 sm:w-60" : "h-36 w-36"
         }`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={member.photo}
           alt={member.name}
-          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+          className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-105"
         />
       </div>
       <h3 className={`mt-5 font-bold text-brand-brown-dark ${large ? "text-xl" : "text-base"}`}>{member.name}</h3>
@@ -180,12 +180,12 @@ function MemberCard({ member, locale, large = false }: { member: Member; locale:
         href={member.linkedin}
         target="_blank"
         rel="noreferrer"
-        className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold text-brand-green hover:bg-brand-green/20"
+        aria-label={`${TEXT[locale].linkedinLabel} — ${member.name}`}
+        className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#0A66C2] text-white transition-transform hover:scale-110"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-4.5 w-4.5">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z" />
         </svg>
-        {TEXT[locale].linkedinLabel}
       </a>
     </div>
   );
