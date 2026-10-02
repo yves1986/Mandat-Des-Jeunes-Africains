@@ -206,7 +206,13 @@ export default function GouvernancePage({ params }: { params: { locale: string }
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
+      <PageHero
+        eyebrow={t.eyebrow}
+        title={t.title}
+        description={t.description}
+        image="/images/gouvernance-hero.jpg"
+        imagePosition="top"
+      />
 
       <section className="container-page py-20">
         <Reveal className="mx-auto max-w-sm">

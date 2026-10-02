@@ -6,11 +6,20 @@ type PageHeroProps = {
   description?: string;
   /** Path under /public, e.g. "/images/mouvement-hero.jpg". Omit for the plain gradient. */
   image?: string;
+  /** Vertical focal point for the full-bleed image's object-position. Defaults to "center". */
+  imagePosition?: "center" | "top";
   /** Path under /public to a subject-cutout PNG, shown large on the dark gradient instead of a full-bleed photo. */
   cutout?: string;
 };
 
-export default function PageHero({ eyebrow, title, description, image, cutout }: PageHeroProps) {
+export default function PageHero({
+  eyebrow,
+  title,
+  description,
+  image,
+  imagePosition = "center",
+  cutout,
+}: PageHeroProps) {
   return (
     <section
       className={`relative isolate overflow-hidden text-brand-cream ${
@@ -24,7 +33,14 @@ export default function PageHero({ eyebrow, title, description, image, cutout }:
       {image && (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" aria-hidden="true" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 -z-20 h-full w-full object-cover ${
+              imagePosition === "top" ? "object-top" : "object-center"
+            }`}
+          />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-brown-dark/95 via-brand-brown-dark/75 to-brand-brown-dark/40" />
           <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-brown-dark/85 via-transparent to-transparent" />
         </>
