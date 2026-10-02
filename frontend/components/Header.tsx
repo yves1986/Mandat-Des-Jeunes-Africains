@@ -52,6 +52,11 @@ export default function Header({ locale }: { locale: Locale }) {
       ],
     },
     {
+      href: `/${locale}/gouvernance`,
+      match: `/${locale}/gouvernance`,
+      label: dict.nav.governance,
+    },
+    {
       href: `/${locale}/actions`,
       match: `/${locale}/actions`,
       label: dict.nav.actions,

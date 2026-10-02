@@ -57,7 +57,7 @@ const TEXT: Record<Locale, {
     founderTitle: "Une conviction à l'origine du mouvement",
     founderQuote:
       "« Nous avons créé ce mouvement parce que l'avenir de l'Afrique ne peut plus se décider sans sa jeunesse. Chaque jeune qui rejoint le Mandat porte une part de cette responsabilité collective. »",
-    founderRole: "Fondateur, Mandat des Jeunes Africains",
+    founderRole: "Président-Fondateur, Mandat des Jeunes Africains",
   },
   en: {
     metaTitle: "The Movement",
@@ -87,7 +87,7 @@ const TEXT: Record<Locale, {
     founderTitle: "The conviction behind the movement",
     founderQuote:
       "\"We created this movement because Africa's future can no longer be decided without its youth. Every young person who joins the Mandate carries a share of this collective responsibility.\"",
-    founderRole: "Founder, Mandat des Jeunes Africains",
+    founderRole: "Founding President, Mandat des Jeunes Africains",
   },
 };
 

@@ -10,6 +10,7 @@ type Dictionary = {
   nav: {
     home: string;
     movement: string;
+    governance: string;
     actions: string;
     media: string;
     getInvolved: string;
@@ -91,6 +92,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: {
       home: "Accueil",
       movement: "Le Mouvement",
+      governance: "Gouvernance",
       actions: "Actions",
       media: "Médias",
       getInvolved: "S'engager",
@@ -174,6 +176,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: {
       home: "Home",
       movement: "The Movement",
+      governance: "Governance",
       actions: "Actions",
       media: "Media",
       getInvolved: "Get Involved",
