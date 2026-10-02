@@ -13,7 +13,7 @@ type Member = {
 
 const PRESIDENT: Member = {
   name: "Ange Morel Tchetemomon",
-  role: { fr: "Président-Fondateur", en: "Founding President" },
+  role: { fr: "Fondateur et Président", en: "Founder and President" },
   photo: "/images/ange-morel-tchetemomon.jpeg",
   linkedin: "https://www.linkedin.com/in/ange-morel-tchetemomon",
 };
@@ -126,12 +126,12 @@ const TEXT: Record<Locale, {
   fr: {
     metaTitle: "Gouvernance",
     metaDescription:
-      "L'organigramme du Mandat des Jeunes Africains : du Président-Fondateur aux coordinateurs de district, découvrez les membres qui portent le mouvement.",
+      "L'organigramme du Mandat des Jeunes Africains : du Fondateur et Président aux coordinateurs de district, découvrez les membres qui portent le mouvement.",
     eyebrow: "Gouvernance",
     title: "L'organigramme du Mandat des Jeunes Africains",
     description:
-      "Du Président-Fondateur aux coordinateurs de terrain, chaque membre du mouvement porte une responsabilité claire au service de la jeunesse africaine.",
-    presidentEyebrow: "Président-Fondateur",
+      "Du Fondateur et Président aux coordinateurs de terrain, chaque membre du mouvement porte une responsabilité claire au service de la jeunesse africaine.",
+    presidentEyebrow: "Fondateur et Président",
     bureauEyebrow: "Bureau exécutif",
     bureauTitle: "L'équipe de direction",
     directorateEyebrow: "Secrétariats & pôles",
@@ -143,12 +143,12 @@ const TEXT: Record<Locale, {
   en: {
     metaTitle: "Governance",
     metaDescription:
-      "The Mandat des Jeunes Africains org chart: from the Founding President to district coordinators, meet the members who carry the movement.",
+      "The Mandat des Jeunes Africains org chart: from the Founder and President to district coordinators, meet the members who carry the movement.",
     eyebrow: "Governance",
     title: "The Mandat des Jeunes Africains org chart",
     description:
-      "From the Founding President to field coordinators, every member of the movement carries a clear responsibility in service of African youth.",
-    presidentEyebrow: "Founding President",
+      "From the Founder and President to field coordinators, every member of the movement carries a clear responsibility in service of African youth.",
+    presidentEyebrow: "Founder and President",
     bureauEyebrow: "Executive Bureau",
     bureauTitle: "The leadership team",
     directorateEyebrow: "Secretariats & departments",

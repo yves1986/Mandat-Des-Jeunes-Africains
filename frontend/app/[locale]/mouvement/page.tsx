@@ -27,6 +27,7 @@ const TEXT: Record<Locale, {
   founderEyebrow: string;
   founderTitle: string;
   founderQuote: string;
+  founderName: string;
   founderRole: string;
 }> = {
   fr: {
@@ -57,7 +58,8 @@ const TEXT: Record<Locale, {
     founderTitle: "Une conviction à l'origine du mouvement",
     founderQuote:
       "« Nous avons créé ce mouvement parce que l'avenir de l'Afrique ne peut plus se décider sans sa jeunesse. Chaque jeune qui rejoint le Mandat porte une part de cette responsabilité collective. »",
-    founderRole: "Président-Fondateur, Mandat des Jeunes Africains",
+    founderName: "Ange Morel Tchetemomon",
+    founderRole: "Fondateur et Président, Mandat des Jeunes Africains",
   },
   en: {
     metaTitle: "The Movement",
@@ -87,7 +89,8 @@ const TEXT: Record<Locale, {
     founderTitle: "The conviction behind the movement",
     founderQuote:
       "\"We created this movement because Africa's future can no longer be decided without its youth. Every young person who joins the Mandate carries a share of this collective responsibility.\"",
-    founderRole: "Founding President, Mandat des Jeunes Africains",
+    founderName: "Ange Morel Tchetemomon",
+    founderRole: "Founder and President, Mandat des Jeunes Africains",
   },
 };
 
@@ -146,7 +149,8 @@ export default function MouvementPage({ params }: { params: { locale: string } }
             <blockquote className="mt-5 text-lg italic leading-relaxed text-brand-brown-dark/80">
               {t.founderQuote}
             </blockquote>
-            <p className="mt-5 text-sm font-bold uppercase tracking-wide text-brand-green">{t.founderRole}</p>
+            <p className="mt-6 text-lg font-bold text-brand-brown-dark">{t.founderName}</p>
+            <p className="mt-1 text-sm font-bold uppercase tracking-wide text-brand-green">{t.founderRole}</p>
           </div>
         </Reveal>
       </section>
