@@ -39,6 +39,8 @@ async function postJson<T = unknown>(path: string, body: unknown): Promise<ApiRe
 export function submitContactMessage(body: {
   fullName: string;
   email: string;
+  phone?: string;
+  whatsapp?: string;
   subject: string;
   message: string;
 }) {

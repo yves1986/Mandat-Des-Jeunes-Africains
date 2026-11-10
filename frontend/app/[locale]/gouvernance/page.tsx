@@ -91,6 +91,12 @@ const DIRECTORATE: Member[] = [
     photo: "/images/abdoul-aziz-karamoko.jpeg",
     linkedin: "https://www.linkedin.com/in/abdoul-aziz-karamoko-0aa661340",
   },
+  {
+    name: "Soffo Emmanuel",
+    role: { fr: "Responsable des Réseaux Sociaux", en: "Social Media Manager" },
+    photo: "/images/soffo-emmanuel.jpg",
+    linkedin: "https://www.linkedin.com/in/soffo-emmanuel",
+  },
 ];
 
 const COORDINATORS: Member[] = [

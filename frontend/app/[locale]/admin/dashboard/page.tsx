@@ -199,6 +199,13 @@ export default function AdminDashboardPage() {
                 <div key={c._id} className="p-5">
                   <p className="text-sm font-semibold text-brand-brown-dark">{c.fullName}</p>
                   <p className="text-xs text-brand-brown-dark/50">{c.email}</p>
+                  {(c.phone || c.whatsapp) && (
+                    <p className="text-xs text-brand-brown-dark/50">
+                      {[c.phone && `Tél. ${c.phone}`, c.whatsapp && `WhatsApp ${c.whatsapp}`]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </p>
+                  )}
                   <p className="mt-1 text-sm text-brand-brown-dark/70">{c.subject}</p>
                 </div>
               ))}

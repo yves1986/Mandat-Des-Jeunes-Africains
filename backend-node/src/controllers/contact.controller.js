@@ -4,8 +4,8 @@ const { toCsv } = require("../utils/csv");
 
 async function createContactMessage(req, res, next) {
   try {
-    const { fullName, email, subject, message } = req.body;
-    const contact = await Contact.create({ fullName, email, subject, message });
+    const { fullName, email, phone, whatsapp, subject, message } = req.body;
+    const contact = await Contact.create({ fullName, email, phone, whatsapp, subject, message });
 
     res.status(201).json({
       message: "Votre message a bien été reçu. Merci de nous avoir contactés.",
@@ -47,6 +47,8 @@ async function exportContactsCsv(req, res, next) {
       { label: "Date", value: (c) => c.createdAt.toISOString() },
       { label: "Nom complet", value: (c) => c.fullName },
       { label: "Email", value: (c) => c.email },
+      { label: "Téléphone", value: (c) => c.phone ?? "" },
+      { label: "WhatsApp", value: (c) => c.whatsapp ?? "" },
       { label: "Sujet", value: (c) => c.subject },
       { label: "Message", value: (c) => c.message },
       { label: "Statut", value: (c) => c.status },

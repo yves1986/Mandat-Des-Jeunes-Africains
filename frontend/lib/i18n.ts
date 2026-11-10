@@ -35,6 +35,10 @@ type Dictionary = {
   forms: {
     fullName: string;
     email: string;
+    phone: string;
+    phonePlaceholder: string;
+    whatsapp: string;
+    whatsappPlaceholder: string;
     subject: string;
     message: string;
     country: string;
@@ -119,6 +123,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
     forms: {
       fullName: "Nom complet",
       email: "Adresse e-mail",
+      phone: "Numéro de téléphone",
+      phonePlaceholder: "+225 01 23 45 67 89",
+      whatsapp: "Numéro WhatsApp",
+      whatsappPlaceholder: "+225 01 23 45 67 89",
       subject: "Sujet",
       message: "Message",
       country: "Pays",
@@ -202,6 +210,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
     forms: {
       fullName: "Full name",
       email: "Email address",
+      phone: "Phone number",
+      phonePlaceholder: "+225 01 23 45 67 89",
+      whatsapp: "WhatsApp number",
+      whatsappPlaceholder: "+225 01 23 45 67 89",
       subject: "Subject",
       message: "Message",
       country: "Country",

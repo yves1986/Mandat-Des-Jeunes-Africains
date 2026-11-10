@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { submitContactMessage } from "@/lib/api";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-const initialForm = { fullName: "", email: "", subject: "", message: "" };
+const initialForm = { fullName: "", email: "", phone: "", whatsapp: "", subject: "", message: "" };
 
 export default function ContactForm({ locale, initialSubject }: { locale: Locale; initialSubject?: string }) {
   const dict = getDictionary(locale);
@@ -52,6 +52,33 @@ export default function ContactForm({ locale, initialSubject }: { locale: Locale
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
             placeholder="vous@exemple.com"
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
+            {dict.forms.phone}
+          </label>
+          <input
+            type="tel"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
+            placeholder={dict.forms.phonePlaceholder}
+          />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
+            {dict.forms.whatsapp}
+          </label>
+          <input
+            type="tel"
+            value={form.whatsapp}
+            onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+            className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
+            placeholder={dict.forms.whatsappPlaceholder}
           />
         </div>
       </div>

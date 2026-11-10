@@ -39,6 +39,8 @@ export type ContactMessage = {
   _id: string;
   fullName: string;
   email: string;
+  phone?: string;
+  whatsapp?: string;
   subject: string;
   message: string;
   createdAt: string;

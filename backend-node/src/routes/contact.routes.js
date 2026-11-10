@@ -16,6 +16,8 @@ router.post(
   [
     body("fullName").trim().notEmpty().withMessage("Le nom complet est requis."),
     body("email").isEmail().withMessage("Adresse e-mail invalide."),
+    body("phone").optional().trim(),
+    body("whatsapp").optional().trim(),
     body("subject").trim().notEmpty().withMessage("Le sujet est requis."),
     body("message").trim().isLength({ min: 10 }).withMessage("Le message est trop court."),
   ],
