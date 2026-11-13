@@ -226,6 +226,13 @@ export default function AdminDashboardPage() {
                   <p className="text-xs text-brand-brown-dark/50">
                     {e.country} · {e.engagementType}
                   </p>
+                  {(e.phone || e.whatsapp) && (
+                    <p className="text-xs text-brand-brown-dark/50">
+                      {[e.phone && `Tél. ${e.phone}`, e.whatsapp && `WhatsApp ${e.whatsapp}`]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </p>
+                  )}
                 </div>
               ))}
               {engagements.length === 0 && (

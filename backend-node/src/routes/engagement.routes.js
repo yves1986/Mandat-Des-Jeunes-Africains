@@ -15,6 +15,15 @@ router.post(
   [
     body("fullName").trim().notEmpty().withMessage("Le nom complet est requis."),
     body("email").isEmail().withMessage("Adresse e-mail invalide."),
+    body("phone")
+      .trim()
+      .matches(/^\+?[0-9 ().-]{8,20}$/)
+      .withMessage("Numéro de téléphone invalide."),
+    body("whatsapp")
+      .optional({ values: "falsy" })
+      .trim()
+      .matches(/^\+?[0-9 ().-]{8,20}$/)
+      .withMessage("Numéro WhatsApp invalide."),
     body("country").trim().notEmpty().withMessage("Le pays est requis."),
     body("engagementType")
       .isIn([

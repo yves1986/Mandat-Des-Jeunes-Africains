@@ -50,6 +50,8 @@ export type EngagementRecord = {
   _id: string;
   fullName: string;
   email: string;
+  phone?: string;
+  whatsapp?: string;
   country: string;
   engagementType: string;
   createdAt: string;

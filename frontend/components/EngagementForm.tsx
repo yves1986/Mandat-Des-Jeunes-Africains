@@ -19,6 +19,8 @@ export default function EngagementForm({
   const initialForm = {
     fullName: "",
     email: "",
+    phone: "",
+    whatsapp: "",
     country: "",
     engagementType: defaultType,
     motivation: "",
@@ -71,6 +73,34 @@ export default function EngagementForm({
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
             placeholder="vous@exemple.com"
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
+            {dict.forms.phone}
+          </label>
+          <input
+            type="tel"
+            required
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
+            placeholder={dict.forms.phonePlaceholder}
+          />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold text-brand-brown-dark">
+            {dict.forms.whatsapp}
+          </label>
+          <input
+            type="tel"
+            value={form.whatsapp}
+            onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+            className="w-full rounded-lg border border-brand-brown/20 px-4 py-2.5 text-sm focus:border-brand-green focus:outline-none"
+            placeholder={dict.forms.whatsappPlaceholder}
           />
         </div>
       </div>

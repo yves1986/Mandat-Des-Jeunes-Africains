@@ -50,6 +50,8 @@ export function submitContactMessage(body: {
 export function submitEngagement(body: {
   fullName: string;
   email: string;
+  phone: string;
+  whatsapp?: string;
   country: string;
   engagementType: string;
   motivation?: string;

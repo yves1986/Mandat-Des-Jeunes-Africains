@@ -4,6 +4,8 @@ const engagementSchema = new mongoose.Schema(
   {
     fullName: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true, lowercase: true },
+    phone: { type: String, trim: true },
+    whatsapp: { type: String, trim: true },
     country: { type: String, required: true, trim: true },
     engagementType: {
       type: String,

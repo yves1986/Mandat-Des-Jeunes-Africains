@@ -3,10 +3,12 @@ const { toCsv } = require("../utils/csv");
 
 async function createEngagement(req, res, next) {
   try {
-    const { fullName, email, country, engagementType, motivation } = req.body;
+    const { fullName, email, phone, whatsapp, country, engagementType, motivation } = req.body;
     const engagement = await Engagement.create({
       fullName,
       email,
+      phone,
+      whatsapp,
       country,
       engagementType,
       motivation,
@@ -37,6 +39,8 @@ async function exportEngagementsCsv(req, res, next) {
       { label: "Date", value: (e) => e.createdAt.toISOString() },
       { label: "Nom complet", value: (e) => e.fullName },
       { label: "Email", value: (e) => e.email },
+      { label: "Téléphone", value: (e) => e.phone ?? "" },
+      { label: "WhatsApp", value: (e) => e.whatsapp ?? "" },
       { label: "Pays", value: (e) => e.country },
       { label: "Type d'engagement", value: (e) => e.engagementType },
       { label: "Motivation", value: (e) => e.motivation },
