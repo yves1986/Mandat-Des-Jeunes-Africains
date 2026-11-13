@@ -73,8 +73,20 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
             <li>
               <span className="font-semibold text-brand-brown-dark">{t.phoneLabel}</span>
               <br />
-              <a href="tel:+225000000000" className="text-brand-green">
-                +225 00 000 00 00
+              <a href="tel:+2250556734432" className="text-brand-green">
+                +225 05 56 73 44 32
+              </a>
+            </li>
+            <li>
+              <span className="font-semibold text-brand-brown-dark">WhatsApp</span>
+              <br />
+              <a
+                href="https://wa.me/2250556734432"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-green"
+              >
+                +225 05 56 73 44 32
               </a>
             </li>
           </ul>

@@ -75,8 +75,18 @@ export default function Footer({ locale }: { locale: Locale }) {
               </a>
             </li>
             <li>
-              <a href="tel:+225000000000" className="hover:text-white">
-                +225 00 000 00 00
+              <a href="tel:+2250556734432" className="hover:text-white">
+                +225 05 56 73 44 32
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/2250556734432"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
+                WhatsApp : +225 05 56 73 44 32
               </a>
             </li>
           </ul>
