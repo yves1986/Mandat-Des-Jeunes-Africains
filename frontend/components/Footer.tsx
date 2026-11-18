@@ -7,12 +7,12 @@ const SOCIALS = [
   { label: "Facebook", href: "https://www.facebook.com/share/1DXzTbcRj2/?mibextid=wwXIfr" },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/mandats_desjeunesafricains?stkn=MWd3dXJ1cG41NzBpMA%3D%3D&utm_source=qr",
+    href: "https://www.instagram.com/mandats_desjeunesafricains/",
   },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/mandat-des-jeunes-africains/" },
   { label: "YouTube", href: "https://youtube.com/@mandatdesjeunesafricains?si=F6bZysoVvGvJJpj2" },
-  { label: "X", href: "https://x.com/mandatdesjdyof?s=11&t=g_Z40_amMkLW4f08F8rETQ" },
-  { label: "TikTok", href: "https://www.tiktok.com/@mandatdesjeunes?_r=1&_t=ZG-99rb2iuOh0r" },
+  { label: "X", href: "https://x.com/Mja_officiel" },
+  { label: "TikTok", href: "https://www.tiktok.com/@mandatdesjeunesafricain1" },
 ];
 
 export default function Footer({ locale }: { locale: Locale }) {
