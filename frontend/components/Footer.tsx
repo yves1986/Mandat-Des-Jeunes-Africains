@@ -7,7 +7,7 @@ const SOCIALS = [
   { label: "Facebook", href: "https://www.facebook.com/share/1DXzTbcRj2/?mibextid=wwXIfr" },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/mandats_desjeunesafricains/",
+    href: "https://www.instagram.com/mja.225/",
   },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/mandat-des-jeunes-africains/" },
   { label: "YouTube", href: "https://youtube.com/@mandatdesjeunesafricains?si=F6bZysoVvGvJJpj2" },
